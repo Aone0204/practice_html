@@ -1,0 +1,234 @@
+/*CSS：セレクタ{}*/
+/*フォルダ名/画像名.拡張子*/
+body{
+	background-image: url("images/body_bg.png");
+}
+
+div#wrapper,img#mainimg{
+	max-width:940px;
+	width: 100%;
+	margin:0 auto;
+}
+
+h1{
+	color:#5f3134;
+	font-size: 12px;
+}
+
+h2{
+	background-image: url("images/title_bg.jpg");
+	/*画像の幅が小さい場合↓設定しないと繰り返される*/
+	background-repeat: no-repeat;
+	background-size: 95%;
+	height:95px;
+	/*画像高さ:116px (padding-top:24px + height:92px) */
+	padding-top: 5%;
+	padding-left: 8%;
+	/*margin:赤い線の外側コンテンツとの間*/
+	margin:0px;
+	color: #F48A8A;
+}
+
+dl{
+	background-color: #ffffff;
+	width:670px;
+	margin-top: 0px;
+}
+
+ul#globalnav li{
+	width:188px;
+	list-style-type: none;
+	background-color: #56B3C7;
+}
+/*Flexbox:子要素の配置や順番をコントロールする*/
+/*親要素：Flexコンテナ　子要素：Flexアイテム*/
+ul{
+	display:flex;
+	/*ul:赤い線　li:内側のコンテンツ　padding:赤い線と内側のコンテンツとの間の幅*/
+	padding:0px;
+	margin:0px;
+	
+}
+
+/*ulにdisplay:flexが設定されているためぱんくずリストも横並び*/
+ul#pankuzu li{
+	padding:4px;
+	list-style-type: none;
+}
+
+table#contact_form th{
+	width:140px;
+}
+/*テーブルセル内側に余白*/
+table#contact_form td{
+	padding:10px;
+}
+
+/*送信ボタンとテーブルの縦位置をそろえるためにpタグ外側の余白設定*/
+p#contact_submit{
+	margin:25px;
+}
+
+/*labelが改行されるようにブロック要素にする*/
+label{
+	display:block;
+	/*インライン要素：前後に改行はいらない。(a,img,label,inputなど)*/
+	/*ブロックレベル要素：前後に改行はいり幅と長さ指定できる。(p,div,ul,h1~6など)*/
+}
+
+/*テキストエリアの大きさを指定*/
+textarea{
+	width:300px;
+	/*emはフォントの大きさを１として考えた長さの単位*/
+	height: 10em;
+}
+
+h3{
+	padding-left: 20px;
+}
+
+th{
+	width:64px;
+}
+
+h3.blue{
+	color:#799bf2;
+}
+
+th.blue{
+	background-color: #799bf2;
+}
+
+h3.skyblue{
+	color: #61d3f2;
+}
+
+th.skyblue{
+	background-color: #61d3f2;
+}
+
+table{
+	/*border-collapse:セルの枠線同士の重なり*/
+	border-collapse: collapse;
+	/*border-spacing:枠線同士の間隔*/
+	border-spacing: 0;
+	margin:25px;
+}
+
+th{
+	/*セルの枠線設定:border:太さ　線の種類　線の色*/
+	/*solid:実線*/
+	border:1px solid #8EB8B3;
+	background-color: #F2F2F2;
+}
+
+td{
+	border:1px solid #8EB8B3;
+}
+
+span.small{
+	font-size: 12px;
+}
+
+span.red{
+	color:#ff0000;
+}
+
+div#container{
+	/*mainとasideの親要素containerにdisplay:flex設定で子要素を横並びに*/
+	display:flex;
+	/*子要素(フレックスアイテム)の上側をそろえて表示するために↓設定*/
+	align-items:flex-start;
+	/*※align-itemsを使うと子要素の縦位置を中央揃えや下揃えにできる！*/
+}
+
+main{
+	/*左カラムの横幅を100%に広げてから右カラムが入るように隙間を創る*/
+	width:100%;
+	/*ネガティブマージン：正の数を指定したときと逆方向へ要素が動く*/
+	margin-right:-240px;
+	background-color: #FFFFFF;
+}
+
+/*左カラム内に調節用の子要素であるdiv#contentを創る*/
+/*右側マージンを240pxに指定し重なりを防ぐ*/
+div#content{
+	margin-right:240px;
+}
+
+aside{
+	width:240px;
+}
+
+aside img{
+	margin-bottom:10px;
+}
+
+footer p{
+	/*text-align:文字が表示される横位置を指定*/
+	text-align:center;
+	color:#FFFFFF;
+	margin:0px;
+	background-color: #56B3C7;
+}
+
+/*横幅0-479pxのとき{}内のセレクタ及び値を適応させる*/
+/*andと()の間にスペース必須！*/
+@media only screen and (max-width:479px){
+
+/*bodyのmarginを0にしたためブラウザ毎の差がなくなり横幅は375pxに*/
+body{
+	margin:0;
+}
+
+/*左右に余白をとりwidth:autoで残りの幅が359pxに*/
+div#wrapper{
+	margin-left:8px;
+	margin-right:8px;
+	width:auto;
+}
+
+/*width:100%で画像が親要素の横幅と同じに*/
+/*height:autoで画像の縦横比維持したまま縮小可*/
+div#wrapper img{
+	width:100%;
+	height:auto;
+}
+
+main,dl{
+	width: 100%;
+}
+
+h2{
+	/*背景画像：横幅100%,縦auto*/
+	background-size: 100% auto;
+	/*要素に合わせて調節*/
+	height:auto;
+	padding-top:15px;
+	padding-bottom: 29px;
+	padding-left: 20px;
+	font-size: 18px;
+}
+
+/*flex-direction:columnで並び順が上から下になる*/
+ul#globalnav,div#container{
+	flex-direction:column;
+}
+
+ul#globalnav li{
+	width:100%;
+	text-align: center;
+	margin:1px;
+}
+
+aside{
+	padding-top: 10px;
+	padding-left: 0;
+	margin:0 auto;
+}
+
+footer p{
+	padding:0 5px;
+}
+}
+/*CSSは上から順番に適応される！
